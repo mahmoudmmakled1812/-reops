@@ -1,0 +1,25 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 600 220"
+    role="img"
+    aria-label="Cinema placeholder">
+
+	<!-- Background -->
+	<rect width="600" height="220" fill="#e9ecef" />
+
+	<!-- Cinema Building -->
+	<path
+        d="M95 178V82l205-54 205 54v96H95zm42-56h55v56h-55v-56zm136 0h55v56h-55v-56zm136 0h55v56h-55v-56z"
+        fill="#64748b" />
+
+	<!-- Label Text -->
+	<text
+        x="300"
+        y="207"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="16"
+        fill="#475569">
+		Cinema
+	</text>
+</svg>

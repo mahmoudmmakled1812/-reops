@@ -1,0 +1,28 @@
+@model CinemaDashboard.ViewModels.MovieFormViewModel
+
+@{
+    ViewData["Title"] = "Add movie";
+}
+
+<h1>Add movie</h1>
+<partial name="_Form" model="Model" />
+
+<!-- Image Error Handling Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const placeholderUrl = '@Url.Content("~/images/placeholder-actor.svg")';
+        
+        document.querySelectorAll('img.actor-image').forEach(function (img) {
+            // Set placeholder if src is empty
+            if (!img.src || img.src.trim() === '') {
+                img.src = placeholderUrl;
+            }
+
+            // Handle image load error
+            img.onerror = function () {
+                this.onerror = null;
+                this.src = placeholderUrl;
+            };
+        });
+    });
+</script>

@@ -1,0 +1,86 @@
+@model IEnumerable<CinemaDashboard.Models.Cinema>
+
+@{
+    ViewData["Title"] = "Cinemas";
+}
+
+<div class="row g-4">
+    
+    <!-- Add Cinema Form -->
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <h4>Add cinema</h4>
+                
+                <form asp-action="Create" enctype="multipart/form-data">
+                    
+                    <!-- Name Field -->
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input 
+                            name="Name" 
+                            class="form-control" 
+                            required />
+                    </div>
+
+                    <!-- Image Upload -->
+                    <div class="mb-3">
+                        <label class="form-label">Image</label>
+                        <input 
+                            name="image" 
+                            type="file" 
+                            accept="image/*" 
+                            class="form-control" />
+                    </div>
+
+                    <button class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cinemas List -->
+    <div class="col-lg-8">
+        <h1>Cinemas</h1>
+
+        <!-- Error Message -->
+        @if (TempData["Error"] is string e)
+        {
+            <div class="alert alert-warning">
+                @e
+            </div>
+        }
+
+        <!-- Cinemas Grid -->
+        <div class="row g-3">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        
+                        <!-- Cinema Image -->
+                        <img 
+                            src="@(item.ImageUrl ?? "/images/placeholder-cinema.svg")" 
+                            class="card-img-top" 
+                            style="height: 140px; object-fit: cover" 
+                            onerror="this.onerror=null; this.src='/images/placeholder-cinema.svg';" 
+                            alt="@item.Name" />
+                        
+                        <!-- Cinema Info -->
+                        <div class="card-body d-flex justify-content-between">
+                            <span>@item.Name</span>
+                            
+                            <!-- Delete Button -->
+                            <form asp-action="Delete" asp-route-id="@item.Id">
+                                <button class="btn btn-sm btn-outline-danger">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>

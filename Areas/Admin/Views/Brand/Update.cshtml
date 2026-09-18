@@ -1,0 +1,56 @@
+﻿@model Brand
+
+<div class="container">
+    <div class="row"><div class="display-6 my-4">Update Brand</div></div>
+    <div class="row">
+        @* <form action="/Admin/Brand/Update"> *@
+        <form method="post" enctype="multipart/form-data">
+            @* <input type="hidden" name="Id" value="@Model.Id" /> *@
+            <div class="mb-3">
+                <label for="Name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" aria-describedby="Name">
+            </div>
+            <div class="mb-3">
+                <label for="Img" class="form-label">Upload Img</label>
+                <input class="form-control" type="file" name="Img" id="Img" accept="image/*" onchange="previewImage(event)">
+            </div>
+            <div class="mb-3">
+                <img id="preview"
+                     src="~/imgs/brands/@Model.Logo"
+                     alt="Current Image"
+                     style="max-width: 200px; border:1px solid #ccc; padding:5px; border-radius:10px;" />
+            </div>
+            <div class="mb-3">
+                <label for="Status" class="form-label">Status</label>
+                <select name="Status" class="form-select" aria-label="Status">
+                    @if(Model.Status)
+                    {
+                        <option value="true" selected>Active</option>
+                        <option value="false">In Active</option>
+                    }
+                    else
+                    {
+                        <option value="true">Active</option>
+                        <option value="false" selected>In Active</option>
+                    }
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function previewImage(event) {
+        const input = event.target;
+        const preview = document.getElementById("preview");
+
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result; // الصورة الجديدة
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

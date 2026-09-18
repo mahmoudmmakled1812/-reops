@@ -1,0 +1,162 @@
+@model CinemaDashboard.ViewModels.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<!-- Header Section -->
+<div class="d-flex flex-between-center mb-4">
+    <div>
+        <h2 class="mb-1">Dashboard</h2>
+        <p class="text-700 mb-0">A quick overview of your cinema catalogue.</p>
+    </div>
+    <a class="btn btn-primary" asp-controller="Movies" asp-action="Create">
+        <i class="fas fa-plus me-1"></i> Add movie
+    </a>
+</div>
+
+<!-- Statistics Cards -->
+<div class="row g-3 mb-4">
+    
+    <!-- Movies Card -->
+    <div class="col-sm-6 col-xl-3">
+        <a class="text-decoration-none" asp-controller="Movies">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar avatar-3xl">
+                            <span class="avatar-name rounded-circle bg-primary-subtle text-primary">
+                                <i class="fas fa-film"></i>
+                            </span>
+                        </div>
+                        <div class="flex-1 ms-3">
+                            <h6 class="mb-1 text-700">Movies</h6>
+                            <h3 class="mb-0 text-900">@Model.Movies</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Cinemas Card -->
+    <div class="col-sm-6 col-xl-3">
+        <a class="text-decoration-none" asp-controller="Cinemas">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar avatar-3xl">
+                            <span class="avatar-name rounded-circle bg-success-subtle text-success">
+                                <i class="fas fa-building"></i>
+                            </span>
+                        </div>
+                        <div class="flex-1 ms-3">
+                            <h6 class="mb-1 text-700">Cinemas</h6>
+                            <h3 class="mb-0 text-900">@Model.Cinemas</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Categories Card -->
+    <div class="col-sm-6 col-xl-3">
+        <a class="text-decoration-none" asp-controller="Categories">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar avatar-3xl">
+                            <span class="avatar-name rounded-circle bg-warning-subtle text-warning">
+                                <i class="fas fa-tags"></i>
+                            </span>
+                        </div>
+                        <div class="flex-1 ms-3">
+                            <h6 class="mb-1 text-700">Categories</h6>
+                            <h3 class="mb-0 text-900">@Model.Categories</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Actors Card -->
+    <div class="col-sm-6 col-xl-3">
+        <a class="text-decoration-none" asp-controller="Actors">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar avatar-3xl">
+                            <span class="avatar-name rounded-circle bg-info-subtle text-info">
+                                <i class="fas fa-user-friends"></i>
+                            </span>
+                        </div>
+                        <div class="flex-1 ms-3">
+                            <h6 class="mb-1 text-700">Actors</h6>
+                            <h3 class="mb-0 text-900">@Model.Actors</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+<!-- Content Section -->
+<div class="row g-3">
+    
+    <!-- Content Overview -->
+    <div class="col-lg-8">
+        <div class="card h-100">
+            <div class="card-header bg-body-tertiary">
+                <h5 class="mb-0">Content overview</h5>
+            </div>
+            <div class="card-body">
+                <div class="row text-center g-3">
+                    
+                    <!-- Available Movies -->
+                    <div class="col-sm-6">
+                        <div class="border rounded-3 p-4 h-100">
+                            <i class="fas fa-ticket-alt fs-5 text-success mb-2"></i>
+                            <h2 class="mb-1 text-success">@Model.AvailableMovies</h2>
+                            <p class="mb-0 text-700">Movies now available</p>
+                        </div>
+                    </div>
+
+                    <!-- Total Movies -->
+                    <div class="col-sm-6">
+                        <div class="border rounded-3 p-4 h-100">
+                            <i class="fas fa-film fs-5 text-primary mb-2"></i>
+                            <h2 class="mb-1 text-primary">@Model.Movies</h2>
+                            <p class="mb-0 text-700">Total movies</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="col-lg-4">
+        <div class="card h-100">
+            <div class="card-header bg-body-tertiary">
+                <h5 class="mb-0">Quick actions</h5>
+            </div>
+            <div class="card-body d-grid gap-2">
+                <a class="btn btn-falcon-primary" asp-controller="Movies" asp-action="Create">
+                    <i class="fas fa-plus me-1"></i> Add movie
+                </a>
+                <a class="btn btn-falcon-default" asp-controller="Cinemas" asp-action="Index">
+                    <i class="fas fa-building me-1"></i> Manage cinemas
+                </a>
+                <a class="btn btn-falcon-default" asp-controller="Categories" asp-action="Index">
+                    <i class="fas fa-tags me-1"></i> Manage categories
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>

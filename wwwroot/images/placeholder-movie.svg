@@ -1,0 +1,39 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 320 480"
+    role="img"
+    aria-label="Movie placeholder">
+
+	<!-- Background -->
+	<rect
+        width="320"
+        height="480"
+        fill="#e9ecef" />
+
+	<!-- Card Container -->
+	<rect
+        x="24"
+        y="24"
+        width="272"
+        height="432"
+        rx="12"
+        fill="#dfe3e8"
+        stroke="#bcc3cc"
+        stroke-width="3" />
+
+	<!-- Play Button Area -->
+	<path
+        d="M95 168h130c11 0 20 9 20 20v104c0 11-9 20-20 20H95c-11 0-20-9-20-20V188c0-11 9-20 20-20zm29 34v76l66-38-66-38z"
+        fill="#64748b" />
+
+	<!-- Text Label -->
+	<text
+        x="160"
+        y="370"
+        text-anchor="middle"
+        fill="#475569"
+        font-family="Arial, sans-serif"
+        font-size="20">
+		No image
+	</text>
+</svg>
